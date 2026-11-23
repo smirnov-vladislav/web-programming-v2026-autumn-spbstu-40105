@@ -141,8 +141,15 @@ form.addEventListener('submit', async (event) => {
   const ingredientsText = form.elements.namedItem('ingredients').value;
   const stepsText = form.elements.namedItem('steps').value;
 
-  const ingredients = ingredientsText.split(',').map((item) => item.trim());
-  const steps = stepsText.split(',').map((item) => item.trim());
+  const ingredients = ingredientsText
+    .split(',')
+    .map((item) => item.trim())
+    .filter((item) => item !== '');
+
+  const steps = stepsText
+    .split(',')
+    .map((item) => item.trim())
+    .filter((item) => item !== '');
 
   const recipe = new Recipe(title, ingredients, steps);
 
